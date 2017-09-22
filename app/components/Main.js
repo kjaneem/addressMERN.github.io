@@ -13,12 +13,15 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
-    return { searchTerm: "", results: "" };
+    return { 
+      searchTerm: "",
+      results: "" };
+
   },
 
   // If the component updates we'll run this code
   componentDidUpdate: function(prevProps, prevState) {
-
+ console.log("mounted yay!");
     if (prevState.searchTerm !== this.state.searchTerm) {
       console.log("UPDATED");
 
@@ -26,7 +29,7 @@ var Main = React.createClass({
         if (data !== this.state.results) {
           console.log("HERE");
           console.log(data);
-
+          helpers.saveLocation(this.state.searchTerm,data)
           this.setState({ results: data });
         }
 

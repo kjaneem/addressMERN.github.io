@@ -20,7 +20,28 @@ var helpers = {
       return response.data.results[0].formatted;
     });
 
+  },
+
+    saveLocation: function(location,coordinates) {
+
+    console.log(location,coordinates);
+
+    // Figure out the geolocation
+    var queryURL ="/api/save"
+    var search={
+      searchTerm:location,
+      results:coordinates
+
+    }
+
+    return axios.post(queryURL,search).then(function(response) {
+
+      console.log(response);
+      return response
+    });
+
   }
+
 
 };
 
